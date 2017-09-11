@@ -29,6 +29,12 @@ public class Feature {
         this.type_id = 0;
     }
     
+    public Feature(Feature existingFeature){
+        this.name = existingFeature.name;
+        this.price = existingFeature.price;
+        this.type = existingFeature.type;
+    }
+    
     public String getName(){
         return name;
     }
@@ -67,5 +73,12 @@ public class Feature {
     
     public void setDescription(String newDescription){
             description = newDescription;
+    }
+    
+    public String FeatureInfoString(){
+        return(
+                "Name: " + name +
+                "Type: " + type +
+                "Price: " + price);
     }
 }

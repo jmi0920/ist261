@@ -79,8 +79,16 @@ public class Phone {
         features.add(newFeature);
     }
     
-    public ArrayList getFeatures(){
-        return features;
+    public ArrayList getFeaturesToString(){
+        StringBuilder featureString = new StringBuilder();
+        for(int i = 0; i < features.size(); i++){
+            featureString.append(getFeatureName(features.get(i)));
+        }
+        
+    }
+    
+    public String getFeatureName(Feature currentFeature){
+        return currentFeature.getName();
     }
     
     public String getCheaperPhoneModel(Phone comparedPhone){
@@ -100,7 +108,16 @@ public class Phone {
             return phone1.price - phone2.price;
     }
     
-    //public void removeFeature()
+    public void removeFeatureByName(String newString){
+        for(int i = 0; i < features.size(); i++){
+            features.get(i).getName();
+            if((features.get(i).getName() == newString)){
+                
+            }
+        }
+        
+    }
+    
     
     public String compare2PhoneString (Phone phone1, Phone phone2){
         return (
