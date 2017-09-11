@@ -14,12 +14,13 @@ package ist_261_project;
 //Class is dealing with Plan Options, for Phone relationship look at Feature
 public class Option {
     private String name = "";
-    private float price = 0;
+    private double price = 0;
     private String description = "";
     
-    public Option(String newName, float newPrice){
+    public Option(String newName, double newPrice, String newDescription){
         this.name = newName;
         this.price = newPrice;
+        this.description = newDescription;
     }
     
     public String getName(){
@@ -30,7 +31,7 @@ public class Option {
         return description;
     }
     
-    public float getPrice(){
+    public double getPrice(){
         return price;
     }
     
@@ -38,7 +39,7 @@ public class Option {
         name = newName;
     }
     
-    public void setPrice(float newPrice){
+    public void setPrice(double newPrice){
         price = newPrice;
     }
     

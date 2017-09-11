@@ -7,6 +7,7 @@ package ist_261_project;
 
 import java.util.Random;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -17,14 +18,17 @@ import java.util.ArrayList;
 public class Phone {
     private String model = "";
     private String manufacturer = "";
-    private float price = 0;
+    private double price = 0;
     public ArrayList features;
+    
+    //Forces 2 decimal place accuracy
+    DecimalFormat currency = new DecimalFormat("#.00"); 
     
     //Final int that gets set upon phone creation, cannot be edited.
     final private int phone_id;
     private Random random = new Random();
     
-    public Phone(String newModel, String newManufacturer, float newPrice){
+    public Phone(String newModel, String newManufacturer, double newPrice){
         this.model = newModel;
         this.manufacturer = newManufacturer;
         this.price = newPrice;
@@ -37,10 +41,10 @@ public class Phone {
     
     public String getInfoString(){
         return(
-                "Phone Info:" +
+                "Phone Info" +
                 "\nModel: " + model +
                 "\nManufacturer: " + manufacturer +
-                "\nPrice: " + price);
+                "\nPrice: $" + currency.format(price));
     }
 
     public String getModel(){
@@ -51,7 +55,7 @@ public class Phone {
         return manufacturer;
     }
 
-    public float getPrice(){
+    public double getPrice(){
         return price;
     }
 
@@ -67,7 +71,7 @@ public class Phone {
         manufacturer = newManuf;
     }
     
-    public void setPrice(float newPrice){
+    public void setPrice(double newPrice){
         price = newPrice;
     }
     
@@ -79,12 +83,12 @@ public class Phone {
         return features;
     }
     
-    public String getCheaperPhoneModel(Phone phone1, Phone phone2){
-        if(phone1.price < phone2.price){
-            return phone1.model;
+    public String getCheaperPhoneModel(Phone comparedPhone){
+        if(this.price < comparedPhone.price){
+            return this.model;
         }
         else
-            return phone2.model;
+            return comparedPhone.model;
     }
     
     public double priceDifference(Phone phone1, Phone phone2){
@@ -96,7 +100,9 @@ public class Phone {
             return phone1.price - phone2.price;
     }
     
-    public String comparePhone2String (Phone phone1, Phone phone2){
+    //public void removeFeature()
+    
+    public String compare2PhoneString (Phone phone1, Phone phone2){
         return (
                 "Phone 1:" +
                 "\nModel: " + phone1.getModel() +
@@ -109,7 +115,7 @@ public class Phone {
                 "\nPrice: " + phone2.getPrice() +
                 "\nFeatures " + phone2.getFeatures() +
                 "\n====================================" +
-                "\nCheaper Phone: " + getCheaperPhoneModel(phone1, phone2) +
+                "\nCheaper Phone: " + phone1.getCheaperPhoneModel(phone2) +
                 "\nPrice Difference: " + priceDifference(phone1, phone2));
     }
 }

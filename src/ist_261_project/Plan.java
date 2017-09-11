@@ -17,13 +17,15 @@ import java.util.ArrayList;
 public class Plan {
     
     private String name = "";
-    private float price = 0;
+    private double price = 0;
     private ArrayList options;
+    private String description;
 
-    public Plan(String newName, float newPrice){
+    public Plan(String newName, double newPrice, String newDescription){
         this.name = newName;
         this.price = newPrice;
         this.options = new ArrayList<Option>();
+        this.description = newDescription;
     }
 
     public void addOption(Option newOption){
@@ -34,7 +36,7 @@ public class Plan {
         return name;
     }
     
-    public float getPrice(){
+    public double getPrice(){
         return price;
     }
     
@@ -46,7 +48,7 @@ public class Plan {
         name = newName;
     }
     
-    public void setPrice(float newPrice){
+    public void setPrice(double newPrice){
         price = newPrice;
     }
     

@@ -53,7 +53,7 @@ public class Feature {
         name = newName;
     }
     
-    public void setPrice(float newPrice){
+    public void setPrice(double newPrice){
         price = newPrice;
     }
     
