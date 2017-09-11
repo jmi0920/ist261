@@ -10,9 +10,12 @@ package ist_261_project;
  * @author Joshua Irwin
  */
 
+//TODO: All records should be written to txt file
+//Class is dealing with Plan Options, for Phone relationship look at Feature
 public class Option {
     private String name = "";
     private float price = 0;
+    private String description = "";
     
     public Option(String newName, float newPrice){
         this.name = newName;
@@ -21,6 +24,10 @@ public class Option {
     
     public String getName(){
         return name;
+    }
+    
+    public String getDescription(){
+        return description;
     }
     
     public float getPrice(){
@@ -33,5 +40,9 @@ public class Option {
     
     public void setPrice(float newPrice){
         price = newPrice;
+    }
+    
+    public void setDescription(String newDescription){
+        description = newDescription;
     }
 }

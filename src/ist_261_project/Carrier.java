@@ -11,6 +11,8 @@ import java.util.ArrayList;
  *
  * @author Joshua Irwin
  */
+
+//TODO: All records should be written to txt file
 public class Carrier {
     private String name = "";
     private ArrayList availablePhones;
@@ -18,11 +20,16 @@ public class Carrier {
     
     //Final int that gets set upon phone creation, cannot be edited.
     final private int carrier_id;
-    private Random random = new Random();
+    final private Random random = new Random();
     
     public Carrier(String newName){
         this.name = newName;
+        
+        // Generates unique id for each phone, would prefer incremental id
+        // if possible.
         this.carrier_id = random.nextInt(1000) + 1;
+        this.availablePhones = new ArrayList<Phone>();
+        this.availablePlans = new ArrayList<Plan>();
     }
     
     public String getName(){
@@ -36,10 +43,14 @@ public class Carrier {
     public ArrayList getAvailablePhones(){
         return availablePhones;
     }
+    
+    // Remove From availablePhones Function
 
     public ArrayList getAvailablePlans(){
         return availablePlans;
     }
+
+    // Remove From availablePlans Function
 
     public void addPlan(Plan newPlan){
         availablePlans.add(newPlan);
@@ -48,7 +59,6 @@ public class Carrier {
     public void addPhone(Phone newPhone){
         availablePhones.add(newPhone);
     }
-    
 }
 
 

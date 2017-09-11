@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author Joshua Irwin
  */
 
+//TODO: All records should be written to txt file
 public class Plan {
     
     private String name = "";
@@ -22,6 +23,7 @@ public class Plan {
     public Plan(String newName, float newPrice){
         this.name = newName;
         this.price = newPrice;
+        this.options = new ArrayList<Option>();
     }
 
     public void addOption(Option newOption){
@@ -46,5 +48,17 @@ public class Plan {
     
     public void setPrice(float newPrice){
         price = newPrice;
+    }
+    
+    public String comparePlan2String (Plan plan1, Plan plan2){
+        return (
+                "Plan 1:" +
+                "\nName: " + plan1.name +
+                "\nPrice: " + plan1.price +
+                "\nOptions: " + plan1.getOptions() +
+                "\n\n Plan 2:" +
+                "\nName: " + plan2.name +
+                "\nPrice: " + plan2.price +
+                "\nOptions: " + plan2.getOptions());
     }
 }

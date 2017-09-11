@@ -5,6 +5,8 @@
  */
 package ist_261_project;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Joshua Irwin
@@ -16,6 +18,7 @@ public class IST_261_Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
     }
     
 }

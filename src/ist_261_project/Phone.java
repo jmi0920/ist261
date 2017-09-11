@@ -6,16 +6,19 @@
 package ist_261_project;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  *
  * @author Joshua Irwin
  */
 
+//TODO: All records should be written to txt file
 public class Phone {
     private String model = "";
     private String manufacturer = "";
     private float price = 0;
+    public ArrayList features;
     
     //Final int that gets set upon phone creation, cannot be edited.
     final private int phone_id;
@@ -25,10 +28,19 @@ public class Phone {
         this.model = newModel;
         this.manufacturer = newManufacturer;
         this.price = newPrice;
+        this.features = new ArrayList<Feature>();
         
         // Generates unique id for each phone, would prefer incremental id
         // if possible.
         this.phone_id = random.nextInt(1000) + 1;
+    }
+    
+    public String getInfoString(){
+        return(
+                "Phone Info:" +
+                "\nModel: " + model +
+                "\nManufacturer: " + manufacturer +
+                "\nPrice: " + price);
     }
 
     public String getModel(){
@@ -59,8 +71,47 @@ public class Phone {
         price = newPrice;
     }
     
-
+    public void addFeature(Feature newFeature){
+        features.add(newFeature);
+    }
+    
+    public ArrayList getFeatures(){
+        return features;
+    }
+    
+    public String getCheaperPhoneModel(Phone phone1, Phone phone2){
+        if(phone1.price < phone2.price){
+            return phone1.model;
+        }
+        else
+            return phone2.model;
+    }
+    
+    public double priceDifference(Phone phone1, Phone phone2){
+        //Preforming check so user is never presented with a negative number
+        if (phone2.price > phone1.price){
+             return phone2.price - phone1.price;
+        }
+        else
+            return phone1.price - phone2.price;
+    }
+    
+    public String comparePhone2String (Phone phone1, Phone phone2){
+        return (
+                "Phone 1:" +
+                "\nModel: " + phone1.getModel() +
+                "\nManufacture: " + phone1.getManufacturer() +
+                "\nPrice: " + phone1.getPrice() +
+                "\nFeatures " + phone1.getFeatures() +
+                "\n\n Phone 2:" +
+                "\nModel: " + phone2.getModel() +
+                "\nManufacture: " + phone2.getManufacturer() +
+                "\nPrice: " + phone2.getPrice() +
+                "\nFeatures " + phone2.getFeatures() +
+                "\n====================================" +
+                "\nCheaper Phone: " + getCheaperPhoneModel(phone1, phone2) +
+                "\nPrice Difference: " + priceDifference(phone1, phone2));
+    }
 }
-
 
 
