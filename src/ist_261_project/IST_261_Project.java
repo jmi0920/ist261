@@ -18,7 +18,12 @@ public class IST_261_Project {
         // TODO code application logic here
         //Testing 
         Phone testPhone = new Phone("G6", "LG", 600.00);
+        Feature testFeature = new Feature("64GB Storage", 25.00, "Storage");
+        Feature testFeature2 = new Feature("1700 mAH Battery", 75.00, "Battery");
+        testPhone.addFeature(testFeature);
+        testPhone.addFeature(testFeature2);
         Phone testPhone2 = new Phone("G5", "LG", 300.00);
+        //testPhone2.addFeature(testFeature2);
         System.out.println(testPhone.getInfoString());
         System.out.println("");
         System.out.println(testPhone2.getInfoString());
@@ -27,6 +32,11 @@ public class IST_261_Project {
                 testPhone.getCheaperPhoneModel(testPhone2));
         System.out.println("");
         System.out.println(testPhone.compare2PhoneString(testPhone, testPhone2));
+        System.out.println("");
+        System.out.println(testPhone.removeFeatureByName("64GB Storage"));
+        System.out.println("");
+        System.out.println(testPhone.compare2PhoneString(testPhone, testPhone2));
+        
     }
     
 }
