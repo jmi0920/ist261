@@ -7,6 +7,7 @@ package ist_261_project;
 
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.text.DecimalFormat;
 
 /**
@@ -19,7 +20,7 @@ public class Phone {
     private String model = "";
     private String manufacturer = "";
     private double price = 0;
-    public ArrayList features;
+    public LinkedList features;
     
     //Forces 2 decimal place accuracy
     DecimalFormat currency = new DecimalFormat("#.00"); 
@@ -32,7 +33,7 @@ public class Phone {
         this.model = newModel;
         this.manufacturer = newManufacturer;
         this.price = newPrice;
-        this.features = new ArrayList<Feature>();
+        this.features = new LinkedList<Feature>();
         
         // Generates unique id for each phone, would prefer incremental id
         // if possible.
@@ -82,9 +83,24 @@ public class Phone {
     public ArrayList getFeaturesToString(){
         StringBuilder featureString = new StringBuilder();
         for(int i = 0; i < features.size(); i++){
-            featureString.append(getFeatureName(features.get(i)));
         }
-        
+        return null;
+    }
+    
+    public String getFeatures(){
+        if(features.size() > 0){
+            StringBuilder featureString = new StringBuilder();
+            for(int i = 0; i < features.size(); i++){
+                Feature x =(Feature)features.get(i);
+                if(i == 0)
+                    featureString.append(x.getName());
+                else 
+                    featureString.append(", " + x.getName());
+            }
+            return featureString.toString();
+        }
+        else
+            return "N/A";
     }
     
     public String getFeatureName(Feature currentFeature){
@@ -108,16 +124,23 @@ public class Phone {
             return phone1.price - phone2.price;
     }
     
-    public void removeFeatureByName(String newString){
-        for(int i = 0; i < features.size(); i++){
-            features.get(i).getName();
-            if((features.get(i).getName() == newString)){
-                
+    public String removeFeatureByName(String newString){
+        checking_loop:
+        if(features.size() > 0){
+            for (int i = 0; i < features.size(); i++){
+                Feature x =(Feature)features.get(i);
+                if(x.getName() == newString){
+                    features.remove(i);
+                    break checking_loop;
+                }
             }
+            return ("No Feature matched input name");
         }
+        else
+            return("No Features To Remove");
         
+        return ("Feature Removed");
     }
-    
     
     public String compare2PhoneString (Phone phone1, Phone phone2){
         return (
@@ -126,7 +149,7 @@ public class Phone {
                 "\nManufacture: " + phone1.getManufacturer() +
                 "\nPrice: " + phone1.getPrice() +
                 "\nFeatures " + phone1.getFeatures() +
-                "\n\n Phone 2:" +
+                "\n\nPhone 2:" +
                 "\nModel: " + phone2.getModel() +
                 "\nManufacture: " + phone2.getManufacturer() +
                 "\nPrice: " + phone2.getPrice() +
