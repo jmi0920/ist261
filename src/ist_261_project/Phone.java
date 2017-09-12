@@ -6,7 +6,6 @@
 package ist_261_project;
 
 import java.util.Random;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.text.DecimalFormat;
 
@@ -78,13 +77,6 @@ public class Phone {
     
     public void addFeature(Feature newFeature){
         features.add(newFeature);
-    }
-    
-    public ArrayList getFeaturesToString(){
-        StringBuilder featureString = new StringBuilder();
-        for(int i = 0; i < features.size(); i++){
-        }
-        return null;
     }
     
     public String getFeatures(){
