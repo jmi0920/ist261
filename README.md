@@ -1,12 +1,14 @@
 # IST 261
+
 Fall 2017
+
 Author: Joshua Irwin (jpi5033)
 
 This ReadMe serves to document progress on the IST 261 project as it is built upon.
 Updates will be split into their relative section headers as listed on Canvas.
 
 ==== Module 01: Project Proposal ====
-// link_to project proposal
+
 [Project Proposal](https://drive.google.com/file/d/0B66X1gId2oGROXlfSXYzRkhuTkE/view?usp=sharing)
 
     Created Project Proposal,
@@ -21,6 +23,7 @@ Updates will be split into their relative section headers as listed on Canvas.
         * Convert to web application.
 
 ====  Module 02: Identify and Design Model Classes ====
+
 [CRC Cards](https://drive.google.com/file/d/0B66X1gId2oGROVlvV0hTb2IxUEk/view?usp=sharing)
 
     Identified 5 Java classes for the project.
