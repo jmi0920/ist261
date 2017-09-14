@@ -42,9 +42,10 @@ public class Phone {
     public String getInfoString(){
         return(
                 "Phone Info" +
-                "\nModel: " + model +
-                "\nManufacturer: " + manufacturer +
-                "\nPrice: $" + currency.format(price));
+                "\nModel: " + getModel() +
+                "\nManufacturer: " + getManufacturer() +
+                "\nPrice: $" + currency.format(getPrice()) +
+                "\nFeatures: " + getFeatures());
     }
 
     public String getModel(){
@@ -101,10 +102,10 @@ public class Phone {
     
     public String getCheaperPhoneModel(Phone comparedPhone){
         if(this.price < comparedPhone.price){
-            return this.model;
+            return (this.manufacturer + " " + this.model);
         }
         else
-            return comparedPhone.model;
+            return (comparedPhone.manufacturer + " " + comparedPhone.model);
     }
     
     public double priceDifference(Phone phone1, Phone phone2){
@@ -134,21 +135,21 @@ public class Phone {
         return ("Feature Removed");
     }
     
-    public String compare2PhoneString (Phone phone1, Phone phone2){
+    public String compare2PhoneString (Phone phone2){
         return (
                 "Phone 1:" +
-                "\nModel: " + phone1.getModel() +
-                "\nManufacture: " + phone1.getManufacturer() +
-                "\nPrice: " + phone1.getPrice() +
-                "\nFeatures " + phone1.getFeatures() +
+                "\nModel: " + this.getModel() +
+                "\nManufacture: " + this.getManufacturer() +
+                "\nPrice: " + this.getPrice() +
+                "\nFeatures: " + this.getFeatures() +
                 "\n\nPhone 2:" +
                 "\nModel: " + phone2.getModel() +
                 "\nManufacture: " + phone2.getManufacturer() +
                 "\nPrice: " + phone2.getPrice() +
-                "\nFeatures " + phone2.getFeatures() +
+                "\nFeatures: " + phone2.getFeatures() +
                 "\n====================================" +
-                "\nCheaper Phone: " + phone1.getCheaperPhoneModel(phone2) +
-                "\nPrice Difference: " + priceDifference(phone1, phone2));
+                "\nCheaper Phone: " + this.getCheaperPhoneModel(phone2) +
+                "\nPrice Difference: " + priceDifference(this, phone2));
     }
 }
 
