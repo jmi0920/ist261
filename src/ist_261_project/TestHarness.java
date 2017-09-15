@@ -19,6 +19,7 @@ public class TestHarness {
         System.out.println("Beginning Phone Class Tests.\n");
         System.out.println("Creating New Phone");
         Phone testPhone = new Phone("iPhone X", "Apple", 1000.00);
+        Phone testPhone2 = new Phone("", "", 0);
         if (testPhone != null){
             System.out.println("Phone Created");
             System.out.println(divider);
@@ -44,7 +45,10 @@ public class TestHarness {
             
             System.out.println(divider);
             System.out.println("Creating Second Phone");
-            Phone testPhone2 = new Phone("G6", "LG", 600.00);
+            testPhone2.setModel("G6");
+            testPhone2.setManufacturer("LG");
+            testPhone2.setPrice(600);
+            
              if (testPhone2 != null){
                  System.out.println("Phone Created");
                  System.out.println(divider);
@@ -67,6 +71,56 @@ public class TestHarness {
         }
         
         //Begin Carrier Tests
+         System.out.println("Beginning Carrier Class Tests.\n");
+         System.out.println("Creating New Carrier");
+         System.out.println(divider); 
+         Carrier testCarrier = new Carrier("T-Mobile");
+         if(testCarrier != null){
+             System.out.println("Carrier " + testCarrier.getName() + " Created");
+             
+             System.out.println(divider);
+             System.out.println("Creating Plans");
+             Plan testPlan0 = new Plan("1 Line", 20.00);
+             Plan testPlan1 = new Plan("4 Lines", 60.00);
+             
+             if (testPlan0 != null && testPlan1 != null){
+                 System.out.println("plans created");
+                 System.out.println(divider); 
+                 
+                 System.out.println("Adding plans to Carrier");
+                 testCarrier.addPlan(testPlan0);
+                 testCarrier.addPlan(testPlan1);
+                 if (testCarrier.getPlans().size() > 0)
+                 {
+                    System.out.println("Plans Added");
+                    System.out.println(divider); 
+                    System.out.println("Plans: " + testCarrier.getPlansToString());
+                 }
+                 
+                 else
+                     System.out.println("Test Failed");
+             }
+             
+             System.out.println("Adding Phones To Carrier");
+             testCarrier.addPhone(testPhone);
+             testCarrier.addPhone(testPhone2);
+             
+             if(testCarrier.getPhones().size() > 0)
+             {
+                System.out.println("Available phones at " +
+                        testCarrier.getName() + ": "
+                        + testCarrier.getPhonesToString());
+             }
+             else{
+                 System.out.println("Test Failed");
+             }
+             
+             System.out.println("Adding Options to Carrier Plans");
+             Option testOption0 = new Option("1 GB", 15.00);
+             System.out.println(testOption0.getName());
+             testPlan0.addOption(testOption0);
         
+             
+         }
     }
 }

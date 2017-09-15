@@ -27,6 +27,27 @@ public class Plan {
         this.options = new LinkedList<Option>();
         this.description = newDescription;
     }
+    
+    public String getOptionsToString(){
+        if(options.size() > 0){
+            StringBuilder optionsString = new StringBuilder();
+            for(int i = 0; i < options.size(); i++){
+                Option x =(Option)options.get(i);
+                if(i == 0)
+                    optionsString.append(x.getName());
+                else 
+                    optionsString.append(", " + x.getName());
+            }
+            return optionsString.toString();
+        }
+        else
+            return "N/A";
+    }
+    
+    public Plan(String newName, double newPrice){
+        this.name = newName;
+        this.price = newPrice;
+    }
 
     public void addOption(Option newOption){
         options.add(newOption);
@@ -56,23 +77,12 @@ public class Plan {
         price = newPrice;
     }
     
-    public String getOptions(){
-        if(options.size() > 0){
-            StringBuilder optionString = new StringBuilder();
-            for(int i = 0; i < options.size(); i++){
-                Option x =(Option)options.get(i);
-                if(i == 0)
-                    optionString.append(x.getName());
-                else 
-                    optionString.append(", " + x.getName());
-            }
-            return optionString.toString();
-        }
-        else
-            return "N/A";
+    public LinkedList getOptions(){
+        return options;
     }
     
-        public String removeFeatureByName(String newString){
+    //Why is this here?
+    public String removeFeatureByName(String newString){
         checking_loop:
         if(options.size() > 0){
             for (int i = 0; i < options.size(); i++){

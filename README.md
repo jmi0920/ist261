@@ -4,8 +4,10 @@ Fall 2017
 
 Author: Joshua Irwin (jpi5033)
 
+Git Repo: https://github.com/jmi0920/ist261
+
 This ReadMe serves to document progress on the IST 261 project as it is built upon.
-Updates will be split into their relative section headers as listed on Canvas.
+Updates will be split into their relevant section headers as listed on Canvas.
 
 ==== Module 01: Project Proposal ====
 
@@ -19,7 +21,7 @@ Updates will be split into their relative section headers as listed on Canvas.
     find the cheapest phone with a plan that will suit their needs.
 
     [Possible Extra Ideas]
-        * Populate the text field based on gathering data from the Internet.
+        * Populate the text field based on data gathered from the Internet.
         * Convert to web application.
 
 ====  Module 02: Identify and Design Model Classes ====
@@ -39,4 +41,7 @@ Updates will be split into their relative section headers as listed on Canvas.
 
 ====  Module 03: Writing Tests for Model Classes ====
 
-
+    Assignment requires two classes to have JUnit Tests written for them. Chose 
+    Phone.java and Carrier.java. These classes also have functions that call on
+    other classes as well, so by choosing those two the tests are testing all five
+    classes that were identified in Module 02.
