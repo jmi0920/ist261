@@ -46,5 +46,8 @@ Updates will be split into their relevant section headers as listed on Canvas.
     have functions that call on other classes as well, so by choosing those two
     the tests are testing all five classes that were identified in Module 02.
 
-    For the created automatic JUnit Tests, the Phone and Plan classes were
-    chosen.
+    For the created automatic JUnit Tests, the Phone, Plan, and Option
+    classes were chosen.
+
+    *Edit(9/16/17) Automatic JUnit Tests required to be different from 
+    handwritten tests, creating Option as well for automatic tests.
