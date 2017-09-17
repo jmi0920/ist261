@@ -47,6 +47,8 @@ public class Plan {
     public Plan(String newName, double newPrice){
         this.name = newName;
         this.price = newPrice;
+        this.description = "";
+        this.options = new LinkedList<Option>();
     }
 
     public void addOption(Option newOption){
@@ -82,12 +84,12 @@ public class Plan {
     }
     
     //Why is this here?
-    public String removeFeatureByName(String newString){
+    public String removeOptionByName(String optionName){
         checking_loop:
         if(options.size() > 0){
             for (int i = 0; i < options.size(); i++){
                 Option x =(Option)options.get(i);
-                if(x.getName() == newString){
+                if(x.getName() == optionName){
                     options.remove(i);
                     break checking_loop;
                 }

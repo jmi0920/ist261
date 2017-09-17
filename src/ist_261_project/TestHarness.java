@@ -14,12 +14,12 @@ public class TestHarness {
     
     public TestHarness() {
         String divider = "---------------------\n";
-        
+       
         //Begin Phone Tests
         System.out.println("Beginning Phone Class Tests.\n");
         System.out.println("Creating New Phone");
         Phone testPhone = new Phone("iPhone X", "Apple", 1000.00);
-        Phone testPhone2 = new Phone("", "", 0);
+        Phone testPhone2 = new Phone("Pixel 2", "Google", 900.00);
         if (testPhone != null){
             System.out.println("Phone Created");
             System.out.println(divider);
@@ -117,10 +117,25 @@ public class TestHarness {
              
              System.out.println("Adding Options to Carrier Plans");
              Option testOption0 = new Option("1 GB", 15.00);
-             System.out.println(testOption0.getName());
+             Option testOption1 = new Option("4 GB", 40.00);
              testPlan0.addOption(testOption0);
-        
+             testPlan0.addOption(testOption1);
              
+             if(testPlan0.getOptions().size() > 0){
+                 System.out.println("Options Added");
+                 System.out.println("Options: " + testPlan0.getOptionsToString());
+                 
+                 System.out.println(divider);
+                 System.out.println("Removing Option");
+                 testPlan0.removeOptionByName("1 GB");
+                 System.out.println(divider);
+                 System.out.println("Option Removed");
+                 System.out.println("Options: " + testPlan0.getOptionsToString());
+                 System.out.println(divider);
+             }
          }
+         
+         System.out.println("Comparing Two Phones \n");
+         System.out.println(testPhone.compare2PhoneString(testPhone2));
     }
 }

@@ -42,6 +42,9 @@ Updates will be split into their relevant section headers as listed on Canvas.
 ====  Module 03: Writing Tests for Model Classes ====
 
     Assignment requires two classes to have JUnit Tests written for them. Chose 
-    Phone.java and Carrier.java. These classes also have functions that call on
-    other classes as well, so by choosing those two the tests are testing all five
-    classes that were identified in Module 02.
+    Phone.java and Carrier.java for the manual unit tests. These classes also 
+    have functions that call on other classes as well, so by choosing those two
+    the tests are testing all five classes that were identified in Module 02.
+
+    For the created automatic JUnit Tests, the Phone and Plan classes were
+    chosen.
