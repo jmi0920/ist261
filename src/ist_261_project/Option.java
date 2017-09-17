@@ -23,6 +23,14 @@ public class Option {
         this.description = newDescription;
     }
     
+    public Option(String newName, double newPrice){
+        this.name = newName;
+        this.price = newPrice;
+        this.description = "";
+    }
+    
+    
+    
     public String getName(){
         return name;
     }

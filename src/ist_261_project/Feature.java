@@ -35,6 +35,12 @@ public class Feature {
         this.type = existingFeature.type;
     }
     
+    public Feature(String newName, String newType){
+        this.name = newName;
+        this.type = newType;
+        this.price = 0;
+    }
+    
     public String getName(){
         return name;
     }
@@ -75,10 +81,10 @@ public class Feature {
             description = newDescription;
     }
     
-    public String FeatureInfoString(){
+    public String featureInfoString(){
         return(
                 "Name: " + name +
-                "Type: " + type +
-                "Price: " + price);
+                ", Type: " + type +
+                ", Price: " + price);
     }
 }
