@@ -53,6 +53,7 @@ Updates will be split into their relevant section headers as listed on Canvas.
     handwritten tests, creating Option as well for automatic tests.
 
 ==== ApplicationHome ====
+
     Added interface home page using JavaFX, found in ApplicationHome.java,
     Shift + F6 in class to run.
 
