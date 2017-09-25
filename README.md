@@ -51,3 +51,27 @@ Updates will be split into their relevant section headers as listed on Canvas.
 
     *Edit(9/16/17) Automatic JUnit Tests required to be different from 
     handwritten tests, creating Option as well for automatic tests.
+
+==== ApplicationHome ====
+    Added interface home page using JavaFX, found in ApplicationHome.java,
+    Shift + F6 in class to run.
+
+    *May need to rewrite into Swing.
+
+====  Module 04: Implementing Inheritance-Polymorphism ====
+ 
+    Assignment 01 requires a super class to be identified and then sub-classes
+    then created that inherit functions from their super class. I have 
+    identified Phone.java as the super class and the from there, created three
+    sub-classes (Android, Apple, Other). Selection of sub-classes based off the 
+    two phone operating systems that dominate the market and then a third 
+    sub-class that will handle any other type of phone. Each sub class has
+    methods that are specific to the class, then an overridden method called 
+    `getPhoneDetails()`. 
+
+    Assignment 02 attempts to create an interface for the phone and plan class,
+    unsure on how to implement.
+
+
+
+    

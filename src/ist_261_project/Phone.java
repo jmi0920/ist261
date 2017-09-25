@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
  */
 
 //TODO: All records should be written to txt file
-public class Phone {
+public class Phone implements PrintDetails{
     private String model = "";
     private String manufacturer = "";
     private double price = 0;
@@ -39,15 +39,6 @@ public class Phone {
         this.phone_id = random.nextInt(1000) + 1;
     }
     
-    public String getInfoString(){
-        return(
-                "Phone Info" +
-                "\nModel: " + getModel() +
-                "\nManufacturer: " + getManufacturer() +
-                "\nPrice: $" + currency.format(getPrice()) +
-                "\nFeatures: " + getFeatures());
-    }
-
     public String getModel(){
         return model;
     }
@@ -78,6 +69,16 @@ public class Phone {
     
     public void addFeature(Feature newFeature){
         features.add(newFeature);
+    }
+    
+    public void print(){
+        System.out.println(
+        "Phone Info" +
+                "\nModel: " + getModel() +
+                "\nManufacturer: " + getManufacturer() +
+                "\nPrice: $" + currency.format(getPrice()) +
+                "\nFeatures: " + getFeatures()
+                );
     }
     
     public String getFeatures(){
@@ -150,6 +151,22 @@ public class Phone {
                 "\n====================================" +
                 "\nCheaper Phone: " + this.getCheaperPhoneModel(phone2) +
                 "\nPrice Difference: " + priceDifference(this, phone2));
+    }
+    
+    public String getPhoneDetails(){
+        return(
+                "Phone Info" +
+                "\nModel: " + getModel() +
+                "\nManufacturer: " + getManufacturer() +
+                "\nPrice: $" + currency.format(getPrice()) +
+                "\nFeatures: " + getFeatures()
+                );
+    }
+
+
+    @Override
+    public void print(Phone phone, Plan plan) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
