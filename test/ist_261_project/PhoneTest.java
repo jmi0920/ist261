@@ -39,7 +39,7 @@ public class PhoneTest {
                 "\nManufacturer: LG" +
                 "\nPrice: $500.00" +
                 "\nFeatures: N/A";
-        String result = instance.getInfoString();
+        String result = instance.getPhoneDetails();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
