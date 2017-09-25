@@ -31,7 +31,6 @@ public class Carrier {
         this.availablePhones = new LinkedList<Phone>();
         this.availablePlans = new LinkedList<Plan>();
     }
-    
    
     public LinkedList getPlans(){
         return availablePlans;

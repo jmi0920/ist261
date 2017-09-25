@@ -19,7 +19,11 @@ public class IST_261_Project {
           // functions will also test some features of Option, Plan and Feature
           // Classes.
           
-          TestHarness test = new TestHarness();
+          TestHarness test = new TestHarness() {
+              @Override
+              public void print(Phone phone, Plan plan) {
+                  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+              }
+        };
     }
-    
 }
