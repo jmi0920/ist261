@@ -20,6 +20,7 @@ public class ApplePhone extends Phone{
             double newPrice, String verison, int newChargerType){
         super(newModel, newManufacturer, newPrice);
         
+        
         iOSVersion = verison;
         chargerType = newChargerType;
         

@@ -61,7 +61,7 @@ Updates will be split into their relevant section headers as listed on Canvas.
 
 ====  Module 04: Implementing Inheritance-Polymorphism ====
  
-    Assignment 01 requires a super class to be identified and then sub-classes
+    Assignment 04 requires a super class to be identified and then sub-classes
     then created that inherit functions from their super class. I have 
     identified Phone.java as the super class and the from there, created three
     sub-classes (Android, Apple, Other). Selection of sub-classes based off the 
@@ -73,6 +73,39 @@ Updates will be split into their relevant section headers as listed on Canvas.
     Assignment 02 attempts to create an interface for the phone and plan class,
     unsure on how to implement.
 
+====  Module 05:  Implementing a Simple MVC Application ===='
 
+    Created a Controller and View class for the Phone Model. Once the controller
+    is instantiated, the PhoneList class is called as well as the
+    PhoneView class. The PhoneList class just creates a LinkedList of Phone
+    objects and the view class then crates an interface that allows the user
+    to view them, beginning at the 0 index of the array. There are four buttons
+    on this interface (Next, Back, Edit, Delete). These buttons allow navigation
+    and modifications of the data. Next and Back allow the user to navigate the
+    interface and become disabled when the user reaches the beginning or the 
+    end of the array respectively. The will also both become disabled if the 
+    array becomes empty and will remain in such a state until an object is 
+    created.
 
-    
+    The Edit and Delete buttons allow users to modify the data that is presented
+    to them. Edit allows the user to modify the data on the page they are 
+    currently looking at by presenting them with three consecutive JOptionPanes
+    for Model, Manufacturer, and price. If the user leaves any of the fields
+    blank or hits the close button all data will be discarded at the end
+    and present them with an error. Otherwise once the user submits their 
+    changes, the values for the object will be changed and the JFrame will be 
+    updated with the new information. The delete button allows the user to 
+    delete the current object they are viewing. If the button is clicked then
+    a confirmation page is presented to the user verifying that they wish to 
+    delete the object. If the user chooses yes, then the object is removed from
+    the list and then the user is redirect to the object before or after the
+    one they were previously on. If the user deletes the only object in the 
+    array then instead of being redirected the fields just show null and will
+    not update until an object is created.
+
+    The ability to create a new object is the the menu bar at the top of the
+    application under File. This will present the same JOptionPanes that
+    are presented when the user clicks on the edit button. The same process
+    applies to these fields, except once the user has submitted their values,
+    a new object is created and then the user is directed to the end of the
+    array where their new object exists.
