@@ -14,13 +14,17 @@ import java.util.LinkedList;
  */
 public class PhoneController {
     
-    public LinkedList phoneList;
+    public LinkedList<Phone> phoneList;
     public PhoneList list;
     
-    public PhoneController(){
-        list = new PhoneList();
-        phoneList = list.getList();
+    public LinkedList<Phone> getPhoneDetails( LinkedList<Phone> phoneList, int index, int addingPhoneDialog){
         
-        PhoneView view = new PhoneView(phoneList);
+        PhoneDetailView view = new PhoneDetailView(phoneList, index, addingPhoneDialog);
+        
+        return phoneList; 
+    }
+    
+    public void getPhoneTable(LinkedList<Phone> phoneList){
+        PhoneTable table = new PhoneTable(phoneList);
     }
 }

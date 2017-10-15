@@ -15,11 +15,11 @@ import java.text.DecimalFormat;
  */
 
 //TODO: All records should be written to txt file
-public class Phone implements PrintDetails{
+public class Phone{
     private String model = "";
     private String manufacturer = "";
     private double price = 0;
-    public LinkedList features;
+    public LinkedList<Feature> features;
     
     //Forces 2 decimal place accuracy
     DecimalFormat currency = new DecimalFormat("#.00"); 
@@ -161,12 +161,6 @@ public class Phone implements PrintDetails{
                 "\nPrice: $" + currency.format(getPrice()) +
                 "\nFeatures: " + getFeatures()
                 );
-    }
-
-
-    @Override
-    public void print(Phone phone, Plan plan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

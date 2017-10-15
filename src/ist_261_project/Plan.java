@@ -18,7 +18,7 @@ public class Plan {
     
     private String name = "";
     private double price = 0;
-    private LinkedList options;
+    private LinkedList<Option> options;
     private String description;
 
     public Plan(String newName, double newPrice, String newDescription){

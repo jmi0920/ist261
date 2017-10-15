@@ -61,7 +61,7 @@ Updates will be split into their relevant section headers as listed on Canvas.
 
 ====  Module 04: Implementing Inheritance-Polymorphism ====
  
-    Assignment 04 requires a super class to be identified and then sub-classes
+    Assignment 01 requires a super class to be identified and then sub-classes
     then created that inherit functions from their super class. I have 
     identified Phone.java as the super class and the from there, created three
     sub-classes (Android, Apple, Other). Selection of sub-classes based off the 
@@ -73,7 +73,7 @@ Updates will be split into their relevant section headers as listed on Canvas.
     Assignment 02 attempts to create an interface for the phone and plan class,
     unsure on how to implement.
 
-====  Module 05:  Implementing a Simple MVC Application ===='
+====  Module 05:  Implementing a Simple MVC Application ====
 
     Created a Controller and View class for the Phone Model. Once the controller
     is instantiated, the PhoneList class is called as well as the
@@ -109,3 +109,21 @@ Updates will be split into their relevant section headers as listed on Canvas.
     applies to these fields, except once the user has submitted their values,
     a new object is created and then the user is directed to the end of the
     array where their new object exists.
+
+====  Module 06:  Implementing the List-Detail Pattern ====
+
+    This assignment called for a creation of a table list view for a model. For
+    this I chose the Phone model. When the application is first run, a 
+    populated table will be presented to the user with a few Phone objects.
+    The user can then click on a specific object and 'Show Details' to view the
+    phone specifically. From this page they are presented with "Edit" and 
+    "Delete" buttons. The edit button will allow the user to modify the details
+    of the specific object through JDialogOptions. The delete button will allow
+    the user to remove the specific object and is then redirected to another 
+    object. 
+
+    The user also has the a "New Phone" button that they can click on. This 
+    button will let the user add new a new Phone based on JDialogOptions and is
+    then redirected to that new phone in the DetailsView.
+
+    
