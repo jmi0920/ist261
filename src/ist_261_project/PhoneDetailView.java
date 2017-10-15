@@ -7,74 +7,56 @@
 package ist_261_project;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 
 /**
  *
  * @author Joshua Irwin
  */
-public class PhoneView{
+public class PhoneDetailView{
     
     JTextField manufacturerField, modelField, priceField;
-    JButton nextButton, previousButton, editButton, deleteButton;
+    JButton nextButton, previousButton, editButton, deleteButton, doneButton;
     String modelString, manufacturerString;
-    JLabel modelLabel, manufacturerLable, priceLabel, headingLabel;
-    JMenuBar menuBar;
-    JMenu file, view;
-    JMenuItem newItem, sortAlphabeticallyModel, sortAlphabeticallyManufacturer; 
+    JLabel modelLabel, manufacturerLable, priceLabel, headingLabel, exitMessage;
+    JPanel buttonPanel;
     int index = 0;
-            
     
-    public PhoneView(LinkedList<Phone> list){
+    public PhoneDetailView(LinkedList<Phone> list, int selectedPhone, int addPhoneDialog){
         
-        LinkedList<Phone> phoneList = new LinkedList<Phone>(list);
-        
+        LinkedList<Phone> phoneList = new LinkedList<>(list);
+        index = selectedPhone;
         
         String modelString = phoneList.get(index).getModel();
         String manufacturerString = phoneList.get(index).getManufacturer();
         
         
         JFrame frame = new JFrame("Phone List");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        menuBar = new JMenuBar();
-        file = new JMenu("File");
-        view = new JMenu("View");
-        
-        menuBar.add(file);
-        menuBar.add(view);
-        
-        newItem = new JMenuItem("Add New Phone");
-        sortAlphabeticallyModel = new JMenuItem("Sort Alphabetically (Model)");
-        sortAlphabeticallyManufacturer = new JMenuItem("Sort Alphabetically (Manufacturer)");
-        
-        file.add(newItem);
-        view.add(sortAlphabeticallyModel);
-        view.add(sortAlphabeticallyManufacturer);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        exitMessage = new JLabel("Please click \"View Table\" to close this page to prevent data loss");
+        exitMessage.setBounds(10, 320, 400, 30);
+        frame.add(exitMessage);
         
         headingLabel = new JLabel("Phone: " + (index+1) + "/" + phoneList.size());
         headingLabel.setBounds(150, 50, 200, 30);
         
         manufacturerField = new JTextField(manufacturerString);
         manufacturerLable = new JLabel("Manufacturer");
-        manufacturerField.setBounds(90, 100, 200,30);  
-        manufacturerLable.setBounds(10, 100, 90, 30);
+        manufacturerField.setBounds(90, 150, 200,30);  
+        manufacturerLable.setBounds(10, 150, 90, 30);
 
         modelField = new JTextField(modelString);
         modelLabel = new JLabel("Model");
-        modelField.setBounds(90, 150, 200,30);
-        modelLabel.setBounds(10, 150, 90, 30);
-        
+        modelField.setBounds(90, 100, 200,30);
+        modelLabel.setBounds(10, 100, 90, 30);
         
         priceField = new JTextField("$" + String.valueOf(phoneList.get(index).getPrice()));
         priceLabel = new JLabel("Price");
@@ -107,8 +89,6 @@ public class PhoneView{
                 headingLabel.setText("Phone: " + (index+1) + "/" + phoneList.size());
             }
         });
-        
-        nextButton.setBounds(300, 320, 70, 30);
 
         //Handles Back Button
         previousButton = new JButton("Back");
@@ -131,9 +111,7 @@ public class PhoneView{
                 headingLabel.setText("Phone: " + (index+1) + "/" + phoneList.size());
             }
         });
-        
-        previousButton.setBounds(10, 320, 70, 30);
-        
+
         // Prevents from looking outside of the array
         if (index == 0){
             previousButton.setEnabled(false);
@@ -176,12 +154,17 @@ public class PhoneView{
                  headingLabel.setText("Phone: " + (index+1) + "/" + phoneList.size());
             }
         });
-        editButton.setBounds(100, 300, 60, 30);
-
-        // Handles Add New Phone in File Menu
-        newItem.addActionListener( new ActionListener(){
+        
+        doneButton = new JButton("View Table");
+        doneButton.addActionListener( new ActionListener() {
             @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
+                PhoneTable phoneTable = new PhoneTable(phoneList);
+                frame.setVisible(false);
+            }
+        });
+
+        if (addPhoneDialog == 1){
                 String model = JOptionPane.showInputDialog(frame, "New Phone Model");
                 String manufacturer = JOptionPane.showInputDialog(frame, "New Phone Manufacturer");
                 String price = JOptionPane.showInputDialog(frame, "New Phone Price");
@@ -234,7 +217,6 @@ public class PhoneView{
                 }
                  headingLabel.setText("Phone: " + (index+1) + "/" + phoneList.size());
             }
-        });
         
         // Handles delete button
         deleteButton = new JButton("Delete");
@@ -248,7 +230,8 @@ public class PhoneView{
                         "Confirm Delete", JOptionPane.YES_NO_OPTION );
                 if (choice == 0){
                     phoneList.remove(index);
-                    
+                    returnList(phoneList);
+        
                     if (phoneList.size() == 0 && choice == 0){
                         index--;
                         modelField.setText("null");
@@ -291,9 +274,19 @@ public class PhoneView{
             }
         });
         
-        deleteButton.setBounds(220, 300, 70, 30);
+        //deleteButton.setBounds(220, 300, 70, 30);
 
         frame.add(headingLabel);
+
+        frame.add(editButton);
+        editButton.setBounds(10, 350, 110, 30);
+        
+        frame.add(deleteButton);
+        deleteButton.setBounds(140, 350, 110, 30);
+        
+        frame.add(doneButton);
+        doneButton.setBounds(265, 350, 110, 30);
+
         
         // Disables input so only method of changing values is through
         // edit button.
@@ -308,17 +301,24 @@ public class PhoneView{
         frame.add(modelLabel);
         frame.add(manufacturerLable);
         frame.add(priceLabel);
+        
+        //Had to add additional checks due to table functionality.
+        if (index == phoneList.size() - 1){
+            nextButton.setEnabled(false);
+        }
+        
+        if (index == 0){
+            previousButton.setEnabled(false);
+        }
 
-        frame.add(nextButton);
-        frame.add(previousButton);
-        frame.add(editButton);
-        frame.add(deleteButton);
-
+      
         frame.setLayout(null);
-
         frame.setSize(400, 425);
-        frame.setJMenuBar(menuBar);
+        frame.setLocationRelativeTo(null); 
         frame.setVisible(true);
-
-    } 
+    }
+    
+    public LinkedList<Phone> returnList(LinkedList<Phone> list){
+        return list;
+    }
 }

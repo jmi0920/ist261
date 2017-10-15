@@ -15,8 +15,8 @@ import java.util.LinkedList;
 //TODO: All records should be written to txt file
 public class Carrier {
     private String name = "";
-    private LinkedList availablePhones;
-    private LinkedList availablePlans;
+    private LinkedList<Phone> availablePhones;
+    private LinkedList<Plan> availablePlans;
     
     //Final int that gets set upon phone creation, cannot be edited.
     final private int carrier_id;

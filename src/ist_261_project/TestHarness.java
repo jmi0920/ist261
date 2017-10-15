@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Joshua Irwin
  */
-public abstract class TestHarness implements PrintDetails{
+public abstract class TestHarness{
     // Testing Phone.java and Carrier.java
     
     public TestHarness() {
@@ -141,25 +141,6 @@ public abstract class TestHarness implements PrintDetails{
          
          testClassHierarchy();
          System.out.println(divider);
-         System.out.println("Testing Interface");
-         testInterface();
-         
-         
-    
-    }
-    
-    public void testInterface(){
-        ApplePhone iPhone4 = new ApplePhone("Iphone 4", "Apple", 100.00,
-            "iOS4", 2);
-        AndroidPhone pixel = new AndroidPhone("Pixel 2", "Google", 1000.00,
-                 "Oreo", 2);
-        
-        ArrayList<PrintDetails> print = new ArrayList<PrintDetails>();
-        
-        
-        print.add(iPhone4);
-        print.add(pixel);
-
     }
     
     public void testClassHierarchy(){

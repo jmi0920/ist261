@@ -36,5 +36,4 @@ public class EditPhonePane {
         newPanel.add(newPriceField);
         
     }
-
 }

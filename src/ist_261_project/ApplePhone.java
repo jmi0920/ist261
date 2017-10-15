@@ -7,7 +7,6 @@
 package ist_261_project;
 
 /**
- *
  * @author Joshua Irwin
  */
 public class ApplePhone extends Phone{
