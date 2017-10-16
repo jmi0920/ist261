@@ -22,10 +22,13 @@ public class IST_261_Project {
           // functions will also test some features of Option, Plan and Feature
           // Classes.
 
-          PhoneList list = new PhoneList();
-          LinkedList<Phone> phoneList = list.getList();
-    
-          ApplicationHome home = new ApplicationHome(phoneList);
+          PhoneList p_list = new PhoneList();
+          CarrierList c_list = new CarrierList();
+          
+          LinkedList<Phone> phoneList = p_list.getList();
+          LinkedList<Carrier> carrierList = c_list.getList();
+          
+          ApplicationHome home = new ApplicationHome(phoneList, carrierList);
            
     }
 }

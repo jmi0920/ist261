@@ -35,7 +35,7 @@ public class PhoneTable {
     JPanel buttonPanel;
     DecimalFormat currency = new DecimalFormat("#.00"); 
     
-    public PhoneTable (LinkedList<Phone> list){
+    public PhoneTable (LinkedList<Phone> list, LinkedList<Carrier> carrierList){
         
 
         LinkedList<Phone> phoneList = new LinkedList<Phone>(list);
@@ -64,7 +64,7 @@ public class PhoneTable {
             public void actionPerformed(ActionEvent e) {
                 //TODO Rename variables
                 PhoneController newPhone = new PhoneController();
-                newPhone.getPhoneDetails(phoneList, 0, 1);
+                newPhone.getPhoneDetails(phoneList, 0, 1, carrierList);
                 tableFrame.setVisible(false);
             }
         });
@@ -82,7 +82,7 @@ public class PhoneTable {
                 }
                 else{
                 PhoneController details = new PhoneController();
-                details.getPhoneDetails(phoneList, selctedPhone, 0);
+                details.getPhoneDetails(phoneList, selctedPhone, 0, carrierList);
                 tableFrame.setVisible(false);
                 }
             }
@@ -92,7 +92,7 @@ public class PhoneTable {
         doneButton.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                ApplicationHome phoneHome = new ApplicationHome(phoneList);
+                ApplicationHome phoneHome = new ApplicationHome(phoneList, carrierList);
                 tableFrame.setVisible(false);
             }
         });

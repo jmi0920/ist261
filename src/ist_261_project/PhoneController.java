@@ -17,14 +17,12 @@ public class PhoneController {
     public LinkedList<Phone> phoneList;
     public PhoneList list;
     
-    public LinkedList<Phone> getPhoneDetails( LinkedList<Phone> phoneList, int index, int addingPhoneDialog){
-        
-        PhoneDetailView view = new PhoneDetailView(phoneList, index, addingPhoneDialog);
-        
+    public LinkedList<Phone> getPhoneDetails( LinkedList<Phone> phoneList, int index, int addingPhoneDialog, LinkedList<Carrier> carrierList){
+        PhoneDetailView view = new PhoneDetailView(phoneList, index, addingPhoneDialog, carrierList);
         return phoneList; 
     }
     
-    public void getPhoneTable(LinkedList<Phone> phoneList){
-        PhoneTable table = new PhoneTable(phoneList);
+    public void getPhoneTable(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList){
+        PhoneTable table = new PhoneTable(phoneList, carrierList);
     }
 }

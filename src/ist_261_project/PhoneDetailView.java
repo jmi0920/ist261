@@ -30,7 +30,8 @@ public class PhoneDetailView{
     JPanel buttonPanel;
     int index = 0;
     
-    public PhoneDetailView(LinkedList<Phone> list, int selectedPhone, int addPhoneDialog){
+    public PhoneDetailView(LinkedList<Phone> list, int selectedPhone, int addPhoneDialog,
+            LinkedList<Carrier> carrierList){
         
         LinkedList<Phone> phoneList = new LinkedList<>(list);
         index = selectedPhone;
@@ -159,7 +160,7 @@ public class PhoneDetailView{
         doneButton.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PhoneTable phoneTable = new PhoneTable(phoneList);
+                PhoneTable phoneTable = new PhoneTable(phoneList, carrierList);
                 frame.setVisible(false);
             }
         });
