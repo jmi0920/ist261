@@ -5,6 +5,10 @@
  */
 package ist_261_project;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Random;
 import java.util.LinkedList;
 /**
@@ -13,7 +17,7 @@ import java.util.LinkedList;
  */
 
 //TODO: All records should be written to txt file
-public class Carrier {
+public class Carrier implements Serializable{
     private String name = "";
     private LinkedList<Phone> availablePhones;
     private LinkedList<Plan> availablePlans;
@@ -98,6 +102,26 @@ public class Carrier {
     
     public void addPhone(Phone newPhone){
         availablePhones.add(newPhone);
+    }
+    
+    public void setName(String newName){
+        name = newName;
+    }
+    
+    public void writeCarrier(Carrier input){
+        FileOutputStream fileOutput = null;
+        ObjectOutputStream objectOut = null;
+        
+        try{
+            fileOutput = new FileOutputStream("CarrierList.ser");
+            objectOut = new ObjectOutputStream(fileOutput);
+            objectOut.writeObject(input);
+            objectOut.close();
+        }
+        
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 }
 

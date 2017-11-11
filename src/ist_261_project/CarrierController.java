@@ -16,6 +16,11 @@ public class CarrierController {
     
     public LinkedList<Carrier> carrierList;
     public CarrierList list;
+
+    public LinkedList<Carrier> getCarrierDetails( LinkedList<Phone> phoneList, int index, int addingPhoneDialog, LinkedList<Carrier> carrierList){
+        CarrierDetailView view = new CarrierDetailView(phoneList, index, addingPhoneDialog, carrierList);
+        return carrierList; 
+    }
     
     public void getCarrierTable(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList){
         CarrierTable table = new CarrierTable(phoneList, carrierList);

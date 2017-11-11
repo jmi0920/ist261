@@ -126,4 +126,25 @@ Updates will be split into their relevant section headers as listed on Canvas.
     button will let the user add new a new Phone based on JDialogOptions and is
     then redirected to that new phone in the DetailsView.
 
-    
+====  Module 07:  Implementing the List-Detail Pattern ====
+
+    This assignment called for implementation of persistence. To accomplish this,
+    serialization is utilized. Both Phone.java and Carrier.java implement 
+    serializable. Two empty files have been created, CarrierList.ser and 
+    PhoneList.ser. These files contain the data that is serialized and 
+    de-serialized between application runs.
+
+    PhoneList.java and CarrierList.java have also been modified to include 
+    functions which allow for persistence implementation.
+
+====  Module 08-A01 Implementing a LinkedList ====
+
+    This assignments calls for the addition of LinkedLists in the application.
+    Nothing had to really be changed with the functionality as LinkedLists were
+    implemented from the beginning and the methods are called using the
+    standard <LinkedList>.remove(), <LinkedList>.add(), and <LinkedList>.get().
+
+    The only addition that had to be made was the inclusion of a search function.
+    This was added to the bottom of the PhoneTable and will search to see if
+    either Phone.getModel() or Phone.getManufacturer() is equal to what the 
+    user entered.

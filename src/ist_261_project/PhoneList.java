@@ -6,40 +6,31 @@
 
 package ist_261_project;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  *
  * @author Josh
  */
-public class PhoneList {
+public class PhoneList implements Serializable{
     
-    LinkedList<Phone> phoneLinkedList;
-
+    private LinkedList<Phone> phoneLinkedList = new LinkedList<Phone>();
+    private String phoneListFileName = "PhoneList.ser";
+    
     public PhoneList() {
         
-        phoneLinkedList = new LinkedList<Phone>();
-
-        Phone lg_g6 = new Phone("G6", "LG", 500.00);
-        Phone iPhone_x = new Phone("iPhone X", "Apple", 1000.00);
-        Phone iPhone_8 = new ApplePhone("iPhone 8", "Apple", 900.00 , "iOS 10", 1);
-        Phone nexus_4 = new Phone("Nexus 4", "LG", 76.95);
-        Phone iPhone_7 = new Phone("iPhone 7", "Apple", 649.99);
-        Phone galaxy_note_8 = new Phone("Galaxy Note 8", "Samsung", 930.00);
-        Phone galaxy_s8 = new Phone("Galaxy S8", "Samsung", 750.00);
-        Phone aristo = new Phone("Aristo", "LG", 150.00);
-        Phone go_flip = new OtherPhone("GO FLIP", "Alcatel", 75.00, "1.1 GHz Dual-Core Processor", 1 , 3);
-        
-        
-        phoneLinkedList.add(lg_g6);
-        phoneLinkedList.add(iPhone_8);
-        phoneLinkedList.add(iPhone_x);
-        phoneLinkedList.add(nexus_4);
-        phoneLinkedList.add(iPhone_7);
-        phoneLinkedList.add(galaxy_note_8);
-        phoneLinkedList.add(galaxy_s8);
-        phoneLinkedList.add(aristo);
-        phoneLinkedList.add(go_flip);
+        this.readFile();
+        if(phoneLinkedList.isEmpty() || phoneLinkedList == null){
+            this.createTestPhones();
+            this.writeFile();
+            this.readFile();
+        }
     }
     
     public LinkedList<Phone> getList(){
@@ -48,6 +39,48 @@ public class PhoneList {
     
     public Phone getFromList(int i){
         return phoneLinkedList.get(i);
+    }
+    
+    public void readFile(){
+        FileInputStream fileInput = null;
+        ObjectInputStream objectIn = null;
+        
+        try{
+            fileInput = new FileInputStream(phoneListFileName);
+            objectIn = new ObjectInputStream(fileInput);
+            phoneLinkedList = (LinkedList)objectIn.readObject();
+            objectIn.close();
+        }
+        
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+        
+        catch(ClassNotFoundException ex){
+        ex.printStackTrace();
+        }
+    }
+    
+    public void writeFile(){
+        FileOutputStream fileOutput = null;
+        ObjectOutputStream objectOut = null;
+        
+        try{
+            fileOutput = new FileOutputStream(phoneListFileName);
+            objectOut = new ObjectOutputStream(fileOutput);
+            objectOut.writeObject(phoneLinkedList);
+            objectOut.close();
+        }
+        
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void createTestPhones(){
+        for(int i = 0; i <5; i++){
+           phoneLinkedList.add(new Phone("TestModel_"+i, "TestManufacturer_"+i, 10));
+        }
     }
 }
 

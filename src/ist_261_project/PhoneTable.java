@@ -16,8 +16,10 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,16 +29,16 @@ import javax.swing.table.DefaultTableModel;
 public class PhoneTable {
     
     public LinkedList phoneList;
-    public PhoneList list;
     public DefaultTableModel tableModel;
     
     JTable phoneTable;
-    JButton newButton, detailsButton, doneButton;
+    JButton newButton, detailsButton, doneButton, searchButton;
     JPanel buttonPanel;
     DecimalFormat currency = new DecimalFormat("#.00"); 
+    JLabel searchText;
+    JTextField searchField;
     
     public PhoneTable (LinkedList<Phone> list, LinkedList<Carrier> carrierList){
-        
 
         LinkedList<Phone> phoneList = new LinkedList<Phone>(list);
         
@@ -57,6 +59,43 @@ public class PhoneTable {
             
             tableModel.insertRow(phoneTable.getRowCount(), new Object[]{model, manuf, "$" + String.valueOf(price)});
         }
+        
+        searchField = new JTextField("Search Phones");
+        searchField.setBounds(0, 200, 250, 30);
+        tableFrame.add(searchField);
+        
+        searchButton = new JButton("Find Phone");
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO Rename variables
+                int phoneIndex = -1;
+                String searchString = searchField.getText();
+                for(int i =0; i < phoneList.size(); i++){
+                    Phone PhoneTemp = phoneList.get(i);
+                    //System.out.println(searchString);
+                    //System.out.println(PhoneTemp.getModel());
+                    if(PhoneTemp.getModel().equals(searchString) || PhoneTemp.getManufacturer().equals(searchString)){
+                        //System.out.println("In Success");
+                        phoneIndex = i;
+                        PhoneController newPhone = new PhoneController();
+                        newPhone.getPhoneDetails(phoneList, phoneIndex, 0, carrierList);
+                        tableFrame.setVisible(false);
+                        System.out.println(phoneList.get(i).getModel());
+                    }
+                }
+                
+                if(phoneIndex == -1){
+                    JOptionPane.showMessageDialog(tableFrame,
+                            "No phone matched search","Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        searchButton.setBounds(260, 200, 100, 30);
+        tableFrame.add(searchButton);
+        
+        
         
         newButton = new JButton("New Phone");
         newButton.addActionListener(new ActionListener() {
@@ -92,6 +131,7 @@ public class PhoneTable {
         doneButton.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                
                 ApplicationHome phoneHome = new ApplicationHome(phoneList, carrierList);
                 tableFrame.setVisible(false);
             }

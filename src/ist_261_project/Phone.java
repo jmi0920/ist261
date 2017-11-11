@@ -5,6 +5,10 @@
  */
 package ist_261_project;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Random;
 import java.util.LinkedList;
 import java.text.DecimalFormat;
@@ -15,7 +19,7 @@ import java.text.DecimalFormat;
  */
 
 //TODO: All records should be written to txt file
-public class Phone{
+public class Phone implements Serializable{
     private String model = "";
     private String manufacturer = "";
     private double price = 0;
@@ -161,6 +165,22 @@ public class Phone{
                 "\nPrice: $" + currency.format(getPrice()) +
                 "\nFeatures: " + getFeatures()
                 );
+    }
+    
+    public void writePhone(Phone input){
+        FileOutputStream fileOutput = null;
+        ObjectOutputStream objectOut = null;
+        
+        try{
+            fileOutput = new FileOutputStream("PhoneList.ser");
+            objectOut = new ObjectOutputStream(fileOutput);
+            objectOut.writeObject(input);
+            objectOut.close();
+        }
+        
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 }
 

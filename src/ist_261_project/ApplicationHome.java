@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -67,7 +68,7 @@ public class ApplicationHome {
         
         homeFrame.getContentPane().add(applicationName, BorderLayout.CENTER);
         
-        homeFrame.setSize(400, 425);
+        homeFrame.setSize(986, 700);
         homeFrame.setLocationRelativeTo(null); 
         homeFrame.setVisible(true);
     }

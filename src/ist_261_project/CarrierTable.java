@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +26,6 @@ import javax.swing.table.DefaultTableModel;
 public class CarrierTable {
     
     public LinkedList carrierList;
-    public CarrierList list;
     public DefaultTableModel tableModel;
     
     JTable carrierTable;
@@ -33,6 +33,7 @@ public class CarrierTable {
     JPanel buttonPanel;
     
     public CarrierTable(LinkedList<Phone> phoneList, LinkedList<Carrier> list){
+        
         LinkedList<Carrier> carrierList = new LinkedList<Carrier>(list);
         JFrame tableFrame = new JFrame();
         tableFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,7 +51,34 @@ public class CarrierTable {
         }
         
         newButton = new JButton("New Carrier");
+            newButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO Rename variables
+                CarrierController newCarrier = new CarrierController();
+                newCarrier.getCarrierDetails(phoneList, 0, 1, carrierList);
+                tableFrame.setVisible(false);
+            }
+        });
+        
         detailsButton = new JButton("Show Details");
+        detailsButton.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedCarrier = carrierTable.getSelectedRow();
+                if(selectedCarrier == -1){
+                    JOptionPane.showMessageDialog(tableFrame,
+                            "An entry must be selected.",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                CarrierController details = new CarrierController();
+                details.getCarrierDetails(phoneList, selectedCarrier, 0, carrierList);
+                tableFrame.setVisible(false);
+                }
+            }
+        });
         
         doneButton = new JButton("Done");
         doneButton.addActionListener( new ActionListener() {
