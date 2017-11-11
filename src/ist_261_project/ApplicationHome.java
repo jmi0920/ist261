@@ -8,16 +8,17 @@ package ist_261_project;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-/**
- *
+/*
  * @author Josh
  */
 public class ApplicationHome {
@@ -29,7 +30,7 @@ public class ApplicationHome {
     public LinkedList<Phone> phoneList;
     public PhoneList list;
     
-    public ApplicationHome(LinkedList<Phone> list){
+    public ApplicationHome(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList){
         
         homeFrame = new JFrame("Home");
         homeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,14 +38,23 @@ public class ApplicationHome {
         applicationName = new JLabel("Application Name", SwingConstants.CENTER);
         
         viewPhones = new JButton("View Phones");
-        viewCarriers = new JButton("Not Yet Implemented");
+        viewCarriers = new JButton("View Carriers");
         viewPlans = new JButton("Not Yet Implemented");
 
         viewPhones.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 PhoneController phonecntl = new PhoneController();
-                phonecntl.getPhoneTable(list);
+                phonecntl.getPhoneTable(phoneList, carrierList);
+                homeFrame.setVisible(false);
+            }
+        });
+        
+        viewCarriers.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarrierController carrierCntl = new CarrierController();
+                carrierCntl.getCarrierTable(phoneList, carrierList);
                 homeFrame.setVisible(false);
             }
         });
@@ -58,7 +68,7 @@ public class ApplicationHome {
         
         homeFrame.getContentPane().add(applicationName, BorderLayout.CENTER);
         
-        homeFrame.setSize(400, 425);
+        homeFrame.setSize(986, 700);
         homeFrame.setLocationRelativeTo(null); 
         homeFrame.setVisible(true);
     }

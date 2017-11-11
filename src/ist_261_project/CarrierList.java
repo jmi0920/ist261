@@ -18,37 +18,33 @@ import java.util.LinkedList;
  *
  * @author Josh
  */
-public class PhoneList implements Serializable{
+public class CarrierList implements Serializable{
+    private LinkedList<Carrier> carrierList = new LinkedList<Carrier>();
+    private String carrierListFileName = "CarrierList.ser";
     
-    private LinkedList<Phone> phoneLinkedList = new LinkedList<Phone>();
-    private String phoneListFileName = "PhoneList.ser";
-    
-    public PhoneList() {
+    public CarrierList(){
         
         this.readFile();
-        if(phoneLinkedList.isEmpty() || phoneLinkedList == null){
-            this.createTestPhones();
+        if(carrierList.isEmpty() || carrierList == null){
+            this.createTestCarrier();
             this.writeFile();
             this.readFile();
         }
     }
     
-    public LinkedList<Phone> getList(){
-        return phoneLinkedList;
+    public LinkedList<Carrier> getList(){
+        return carrierList;
     }
     
-    public Phone getFromList(int i){
-        return phoneLinkedList.get(i);
-    }
-    
+        
     public void readFile(){
         FileInputStream fileInput = null;
         ObjectInputStream objectIn = null;
         
         try{
-            fileInput = new FileInputStream(phoneListFileName);
+            fileInput = new FileInputStream(carrierListFileName);
             objectIn = new ObjectInputStream(fileInput);
-            phoneLinkedList = (LinkedList)objectIn.readObject();
+            carrierList = (LinkedList)objectIn.readObject();
             objectIn.close();
         }
         
@@ -66,9 +62,9 @@ public class PhoneList implements Serializable{
         ObjectOutputStream objectOut = null;
         
         try{
-            fileOutput = new FileOutputStream(phoneListFileName);
+            fileOutput = new FileOutputStream(carrierListFileName);
             objectOut = new ObjectOutputStream(fileOutput);
-            objectOut.writeObject(phoneLinkedList);
+            objectOut.writeObject(carrierList);
             objectOut.close();
         }
         
@@ -77,10 +73,9 @@ public class PhoneList implements Serializable{
         }
     }
     
-    public void createTestPhones(){
+    public void createTestCarrier(){
         for(int i = 0; i <5; i++){
-           phoneLinkedList.add(new Phone("TestModel_"+i, "TestManufacturer_"+i, 10));
+           carrierList.add(new Carrier("TestCarrier_"+i));
         }
     }
 }
-

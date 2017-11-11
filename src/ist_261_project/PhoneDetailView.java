@@ -9,6 +9,9 @@ package ist_261_project;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,7 +33,8 @@ public class PhoneDetailView{
     JPanel buttonPanel;
     int index = 0;
     
-    public PhoneDetailView(LinkedList<Phone> list, int selectedPhone, int addPhoneDialog){
+    public PhoneDetailView(LinkedList<Phone> list, int selectedPhone, int addPhoneDialog,
+            LinkedList<Carrier> carrierList){
         
         LinkedList<Phone> phoneList = new LinkedList<>(list);
         index = selectedPhone;
@@ -159,7 +163,7 @@ public class PhoneDetailView{
         doneButton.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PhoneTable phoneTable = new PhoneTable(phoneList);
+                PhoneTable phoneTable = new PhoneTable(phoneList, carrierList);
                 frame.setVisible(false);
             }
         });
@@ -181,6 +185,22 @@ public class PhoneDetailView{
                     manufacturerField.setText(manufacturer);
                     priceField.setText("$" + Double.parseDouble(price));
                     index = phoneList.size() - 1;
+                    
+                    //Saves the new phone to the data collection upon creation.
+                    FileOutputStream fileOutput = null;
+                    ObjectOutputStream objectOut = null;
+        
+                    try{
+                       fileOutput = new FileOutputStream("PhoneList.ser");
+                       objectOut = new ObjectOutputStream(fileOutput);
+                       objectOut.writeObject(phoneList);
+                       objectOut.close();
+                    }
+        
+                    catch(IOException ex){
+                        ex.printStackTrace();
+                    }
+                
                     
                     // Prevents from looking outside of the array
                     if(phoneList.size() == 1){
@@ -231,6 +251,21 @@ public class PhoneDetailView{
                 if (choice == 0){
                     phoneList.remove(index);
                     returnList(phoneList);
+                    
+                    //Rewrites PhoneList.ser if a phone is removed.
+                    FileOutputStream fileOutput = null;
+                    ObjectOutputStream objectOut = null;
+        
+                    try{
+                       fileOutput = new FileOutputStream("PhoneList.ser");
+                       objectOut = new ObjectOutputStream(fileOutput);
+                       objectOut.writeObject(phoneList);
+                       objectOut.close();
+                    }
+        
+                    catch(IOException ex){
+                        ex.printStackTrace();
+                    }
         
                     if (phoneList.size() == 0 && choice == 0){
                         index--;
@@ -286,7 +321,6 @@ public class PhoneDetailView{
         
         frame.add(doneButton);
         doneButton.setBounds(265, 350, 110, 30);
-
         
         // Disables input so only method of changing values is through
         // edit button.
