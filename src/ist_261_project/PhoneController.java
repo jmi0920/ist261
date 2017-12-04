@@ -6,6 +6,7 @@
 
 package ist_261_project;
 
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 /**
@@ -17,12 +18,12 @@ public class PhoneController {
     public LinkedList<Phone> phoneList;
     public PhoneList list;
     
-    public LinkedList<Phone> getPhoneDetails( LinkedList<Phone> phoneList, int index, int addingPhoneDialog, LinkedList<Carrier> carrierList){
-        PhoneDetailView view = new PhoneDetailView(phoneList, index, addingPhoneDialog, carrierList);
+    public LinkedList<Phone> getPhoneDetails( LinkedList<Phone> phoneList, int index, int addingPhoneDialog, LinkedList<Carrier> carrierList, LinkedHashSet<Plan> planList){
+        PhoneDetailView view = new PhoneDetailView(phoneList, index, addingPhoneDialog, carrierList, planList);
         return phoneList; 
     }
     
-    public void getPhoneTable(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList){
-        PhoneTable table = new PhoneTable(phoneList, carrierList);
+    public void getPhoneTable(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList, LinkedHashSet<Plan> planList){
+        PhoneTable table = new PhoneTable(phoneList, carrierList, planList);
     }
 }

@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,22 +31,22 @@ public class ApplicationHome {
     public LinkedList<Phone> phoneList;
     public PhoneList list;
     
-    public ApplicationHome(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList){
+    public ApplicationHome(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList, LinkedHashSet<Plan> planList){
         
         homeFrame = new JFrame("Home");
         homeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        applicationName = new JLabel("Application Name", SwingConstants.CENTER);
+        applicationName = new JLabel("Phone Comparer", SwingConstants.CENTER);
         
         viewPhones = new JButton("View Phones");
         viewCarriers = new JButton("View Carriers");
-        viewPlans = new JButton("Not Yet Implemented");
+        viewPlans = new JButton("Plans");
 
         viewPhones.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 PhoneController phonecntl = new PhoneController();
-                phonecntl.getPhoneTable(phoneList, carrierList);
+                phonecntl.getPhoneTable(phoneList, carrierList, planList);
                 homeFrame.setVisible(false);
             }
         });
@@ -54,10 +55,22 @@ public class ApplicationHome {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarrierController carrierCntl = new CarrierController();
-                carrierCntl.getCarrierTable(phoneList, carrierList);
+                carrierCntl.getCarrierTable(phoneList, carrierList, planList);
                 homeFrame.setVisible(false);
             }
         });
+        
+        viewPlans.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PlanController planCntl = new PlanController();
+                planCntl.getPlanTable(phoneList, carrierList, planList);
+                homeFrame.setVisible(false);
+            }
+        });
+        
+        ImageIcon icon = createImageIcon("background_image.jpg","");
+        JLabel background = new JLabel("", icon, JLabel.CENTER);
         
         buttonPanel = new JPanel(new GridLayout(1,4));
         buttonPanel.add(viewCarriers);
@@ -65,11 +78,24 @@ public class ApplicationHome {
         buttonPanel.add(viewPlans);
         
         homeFrame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-        
-        homeFrame.getContentPane().add(applicationName, BorderLayout.CENTER);
+        homeFrame.getContentPane().add(applicationName, BorderLayout.NORTH);
+        homeFrame.add(background);
         
         homeFrame.setSize(986, 700);
         homeFrame.setLocationRelativeTo(null); 
         homeFrame.setVisible(true);
     }
+    
+    // Returns an ImageIcon, or null if the path was invalid
+    public ImageIcon createImageIcon(String path, String description) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
 }
+
+

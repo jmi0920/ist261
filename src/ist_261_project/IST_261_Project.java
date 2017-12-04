@@ -5,6 +5,7 @@
  */
 package ist_261_project;
 
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 /**
@@ -26,6 +27,9 @@ public class IST_261_Project {
           CarrierList carrierList = dataCollection.getCarrierList();
           LinkedList<Carrier> carrierLinkedList = carrierList.getList();
           
-          ApplicationHome home = new ApplicationHome(phoneLinkedList, carrierLinkedList);
+          PlanList planList = dataCollection.getPlanList();
+          LinkedHashSet<Plan> planLinkedHashSet = planList.getList();
+          
+          ApplicationHome home = new ApplicationHome(phoneLinkedList, carrierLinkedList, planLinkedHashSet);
     }
 }

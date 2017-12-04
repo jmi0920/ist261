@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -32,7 +33,7 @@ public class CarrierTable {
     JButton newButton, detailsButton, doneButton;
     JPanel buttonPanel;
     
-    public CarrierTable(LinkedList<Phone> phoneList, LinkedList<Carrier> list){
+    public CarrierTable(LinkedList<Phone> phoneList, LinkedList<Carrier> list, LinkedHashSet<Plan> planList){
         
         LinkedList<Carrier> carrierList = new LinkedList<Carrier>(list);
         JFrame tableFrame = new JFrame();
@@ -56,7 +57,7 @@ public class CarrierTable {
             public void actionPerformed(ActionEvent e) {
                 //TODO Rename variables
                 CarrierController newCarrier = new CarrierController();
-                newCarrier.getCarrierDetails(phoneList, 0, 1, carrierList);
+                newCarrier.getCarrierDetails(phoneList, 0, 1, carrierList, planList);
                 tableFrame.setVisible(false);
             }
         });
@@ -74,7 +75,7 @@ public class CarrierTable {
                 }
                 else{
                 CarrierController details = new CarrierController();
-                details.getCarrierDetails(phoneList, selectedCarrier, 0, carrierList);
+                details.getCarrierDetails(phoneList, selectedCarrier, 0, carrierList, planList);
                 tableFrame.setVisible(false);
                 }
             }
@@ -84,7 +85,7 @@ public class CarrierTable {
         doneButton.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ApplicationHome home = new ApplicationHome(phoneList, carrierList);
+                ApplicationHome home = new ApplicationHome(phoneList, carrierList, planList);
                 tableFrame.setVisible(false);
             }
         });

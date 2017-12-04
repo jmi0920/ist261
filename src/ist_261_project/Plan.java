@@ -6,26 +6,31 @@
 
 package ist_261_project;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.LinkedList;
 
-/**
- *
+/*
  * @author Joshua Irwin
  */
 
 //TODO: All records should be written to txt file
-public class Plan {
+public class Plan implements Serializable {
     
     private String name = "";
     private double price = 0;
     private LinkedList<Option> options;
     private String description;
+    private Carrier carrier;
+    private Phone phone;
 
-    public Plan(String newName, double newPrice, String newDescription){
+    public Plan(String newName, Phone newPhone, Carrier newCarrier, double newPrice){
         this.name = newName;
         this.price = newPrice;
-        this.options = new LinkedList<Option>();
-        this.description = newDescription;
+        this.carrier = newCarrier;
+        this.phone = newPhone;
     }
     
     public String getOptionsToString(){
@@ -57,6 +62,14 @@ public class Plan {
     
     public String getDescription(){
         return description;
+    }
+    
+    public Carrier getCarrier(){
+        return carrier;
+    }
+    
+    public Phone getPhone(){
+        return phone;
     }
     
     public String getName(){
@@ -112,5 +125,21 @@ public class Plan {
                 "\nName: " + plan2.name +
                 "\nPrice: " + plan2.price +
                 "\nOptions: " + plan2.getOptions());
+    }
+    
+    public void writePlan(Plan input){
+        FileOutputStream fileOutput = null;
+        ObjectOutputStream objectOut = null;
+        
+        try{
+            fileOutput = new FileOutputStream("PlanList.ser");
+            objectOut = new ObjectOutputStream(fileOutput);
+            objectOut.writeObject(input);
+            objectOut.close();
+        }
+        
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 }

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,7 +35,7 @@ public class PhoneDetailView{
     int index = 0;
     
     public PhoneDetailView(LinkedList<Phone> list, int selectedPhone, int addPhoneDialog,
-            LinkedList<Carrier> carrierList){
+            LinkedList<Carrier> carrierList, LinkedHashSet<Plan> planList){
         
         LinkedList<Phone> phoneList = new LinkedList<>(list);
         index = selectedPhone;
@@ -163,7 +164,7 @@ public class PhoneDetailView{
         doneButton.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PhoneTable phoneTable = new PhoneTable(phoneList, carrierList);
+                PhoneTable phoneTable = new PhoneTable(phoneList, carrierList, planList);
                 frame.setVisible(false);
             }
         });

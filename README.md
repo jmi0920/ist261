@@ -148,3 +148,15 @@ Updates will be split into their relevant section headers as listed on Canvas.
     This was added to the bottom of the PhoneTable and will search to see if
     either Phone.getModel() or Phone.getManufacturer() is equal to what the 
     user entered.
+
+====  M08-A04 Implement a Collection II ====
+    
+    This assignment called for the implementation of the second data collection
+    that was mentioned in Assignment A03. In that assignment I mentioned that
+    LinkedHashSet would be a valid data collection to use based of the 
+    uniqueness of the sets and that there aren't supposed to be any 
+    duplications. This is relevant as Plans are supposed to be unique.
+
+    LinkedHashSets were implemented to handle plans and are seen throughout this
+    project. This assignment also opened up the third button that was on the 
+    home page which handles plan creation and viewing.

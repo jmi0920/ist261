@@ -12,10 +12,12 @@ package ist_261_project;
 public class SerializedDataCollection {
     private PhoneList list_p;
     private CarrierList list_c;
+    private PlanList list_plan;
     
     public SerializedDataCollection() {
         list_p = new PhoneList();
         list_c = new CarrierList();
+        list_plan = new PlanList();
     }
     
     public PhoneList getPhoneList(){
@@ -24,6 +26,10 @@ public class SerializedDataCollection {
     
     public CarrierList getCarrierList(){
         return list_c;
+    }
+    
+    public PlanList getPlanList(){
+        return list_plan;
     }
     
     public void savePhoneList(){

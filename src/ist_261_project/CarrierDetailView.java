@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,7 +35,7 @@ public class CarrierDetailView{
     int index = 0;
     
     public CarrierDetailView(LinkedList<Phone> list, int selectedPhone, int addPhoneDialog,
-            LinkedList<Carrier> carrierList){
+            LinkedList<Carrier> carrierList, LinkedHashSet<Plan> planList){
         
         LinkedList<Carrier> carrier_list = new LinkedList<>(carrierList);
         index = selectedPhone;
@@ -82,7 +83,7 @@ public class CarrierDetailView{
         doneButton.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CarrierTable carrierTable = new CarrierTable(list, carrier_list);
+                CarrierTable carrierTable = new CarrierTable(list, carrier_list, planList);
                 frame.setVisible(false);
             }
         });

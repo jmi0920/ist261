@@ -6,10 +6,19 @@
 
 package ist_261_project;
 
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+
 /**
  *
  * @author Josh
  */
 public class PlanController {
+    
+    public LinkedHashSet<Plan> planList;
+    public PlanList list;
 
+    public void getPlanTable(LinkedList<Phone> phoneList, LinkedList<Carrier> carrierList, LinkedHashSet<Plan> planList){
+        PlanTable table = new PlanTable(phoneList, carrierList, planList);
+    }
 }

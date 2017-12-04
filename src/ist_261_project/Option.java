@@ -29,8 +29,6 @@ public class Option {
         this.description = "";
     }
     
-    
-    
     public String getName(){
         return name;
     }
